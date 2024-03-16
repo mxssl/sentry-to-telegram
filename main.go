@@ -11,12 +11,11 @@ import (
 )
 
 type sentryWebHook struct {
-	Project  string `json:"project"`
-	URL      string `json:"url"`
-	Title    string `json:"title"`
-	Metadata struct {
-		Value string `json:"value"`
-	} `json:"metadata"`
+	Project string `json:"project"`
+	URL     string `json:"url"`
+	Event   struct {
+		Title string `json:"title"`
+	} `json:"event"`
 }
 
 type tgMessage struct {
@@ -53,10 +52,9 @@ func main() {
 			return
 		}
 
-		msg := fmt.Sprintf("<b>Project:</b> %s\n<b>Title:</b> %s\n<b>Metadata:</b> %s\n<b>URL:</b> %s",
+		msg := fmt.Sprintf("<b>Project:</b> %s\n<b>Title:</b> %s\n<b>URL:</b> %s",
 			html.EscapeString(wh.Project),
-			html.EscapeString(wh.Title),
-			html.EscapeString(wh.Metadata.Value),
+			html.EscapeString(wh.Event.Title),
 			html.EscapeString(wh.URL))
 
 		err = sendToTelegram(tgBotToken, tgGroupID, msg)
