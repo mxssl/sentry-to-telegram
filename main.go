@@ -43,10 +43,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	slog.Info("app settings",
-		slog.String("TELEGRAM_BOT_TOKEN", tgBotToken),
-		slog.String("TELEGRAM_GROUP_ID", tgGroupID))
-
 	http.HandleFunc("POST /", func(w http.ResponseWriter, r *http.Request) {
 		slog.Info("request", slog.String("remote_address", r.RemoteAddr))
 		var wh sentryWebHook
