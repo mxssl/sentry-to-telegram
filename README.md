@@ -17,7 +17,7 @@ Example of a `docker-compose.yaml` file:
 version: '3'
 services:
   sentry-to-telegram:
-    image: mxssl/sentry-to-telegram:v0.0.4
+    image: mxssl/sentry-to-telegram:v0.0.5
     ports:
       - "9999:9999"
     restart: always
