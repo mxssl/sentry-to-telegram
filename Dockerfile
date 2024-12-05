@@ -13,7 +13,7 @@ RUN <<EOF
     go build -v -o app
 EOF
 
-FROM alpine:3.19.1
+FROM alpine:3.20.3
 WORKDIR /
 RUN apk add --no-cache ca-certificates
 COPY --from=builder /build/app .
